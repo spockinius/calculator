@@ -26,6 +26,7 @@ return (
       <input placeholder="Second number" name="tokaluku" value={luku.tokaluku} type="number" onChange={inputChanged} />
       <button onClick={addLuku}>+</button>
       <button onClick={minusLuku}>-</button>
+      <p>Calcu-Later!</p>
   </div>
 );
 }
