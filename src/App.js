@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [luku, setLuku] = useState({ekaluku: '', tokaluku: '', result: ''});
+  const [result, setResult] = useState([]);
+
+  const inputChanged = (event) => {
+    setLuku({...luku, [event.target.name]: event.target.value});
+  }
+
+  const addLuku = () => { 
+    console.log({...luku, result: Number(luku.ekaluku) + Number(luku.tokaluku)})
+    setResult(Number(luku.ekaluku) + Number(luku.tokaluku));
+  }  
+
+  const minusLuku = () => { 
+    console.log({...luku, result: Number(luku.ekaluku) - Number(luku.tokaluku)})
+    setResult(Number(luku.ekaluku) - Number(luku.tokaluku));
+  } 
+
+return (
+  <div className="App">
+    Result = {result}<br/>
+      <input placeholder="First number" name="ekaluku" value={luku.ekaluku} type="number" onChange={inputChanged} />
+      <input placeholder="Second number" name="tokaluku" value={luku.tokaluku} type="number" onChange={inputChanged} />
+      <button onClick={addLuku}>+</button>
+      <button onClick={minusLuku}>-</button>
+  </div>
+);
 }
 
 export default App;
